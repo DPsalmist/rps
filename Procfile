@@ -1,0 +1,1 @@
+web: gunicorn rps_game.wsgi --log-file -
