@@ -1,0 +1,288 @@
+{% extends 'dashboard_base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+
+	<div class="col-lg-9 col-md-8 col-12">
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-12">
+                <div class="border-bottom pb-4 mb-4 d-lg-flex justify-content-between align-items-center">
+                    <div class="mb-3 mb-lg-0">
+                        <h1 class="mb-0 h2 fw-bold">Welcome {{ user.username }}</h1>
+                    </div>
+                    <div class="d-flex">
+                        <!-- <div class="input-group me-3  ">
+                            <input class="form-control flatpickr" type="text" placeholder="Select Date" aria-describedby="basic-addon2">
+                            <span class="input-group-text text-muted" id="basic-addon2"><i class="fe fe-calendar"></i></span>
+
+                        </div> -->
+                        <a href="#" style="color:#333;"> Membership:
+                            {% if player_membership == 'Premium' %}
+                            <p style="color:fff;" class="btn btn-primary">{{ player_membership }}</p>
+                            {% else %}
+                            <small style="color:fff;" class="btn btn-outline-success">{{ player_membership }}</small>
+                            {% endif %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Data 1 -->
+        <div class="row">
+            <div class="col-xl-3 col-lg-6 col-md-12 col-12">
+                <!-- Card -->
+                <div class="card mb-4">
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-3 lh-1">
+                            <div>
+                                <span class="fs-6 text-uppercase fw-semi-bold">Win Percentage</span>
+                            </div>
+                            <div>
+                                <span class="fe fe-trending-up fs-3 text-success"></span>
+                            </div>
+                        </div>
+                        <h2 class="fw-bold mb-1">
+                            {{ win_percentage|floatformat:2 }}%
+                        </h2>
+                        <!-- <span class="text-success fw-semi-bold"><i class="fe fe-trending-up me-1"></i>+20.9$</span>
+                        <span class="ms-1 fw-medium">Number of sales</span>  -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-12 col-12">
+                <!-- Card -->
+                <div class="card mb-4">
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-3 lh-1">
+                            <div>
+                                <span class="fs-6 text-uppercase fw-semi-bold">Rank</span>
+                            </div>
+                            <div>
+                                <span class=" fe fe-thumbs-up fs-3 text-primary"></span>
+                            </div>
+                        </div>
+                        <h2 class="fw-bold mb-1">
+                            {{ position }}
+                        </h2>
+                        <span class="text-muted fw-semi-bold">Badge:</span>
+                        <span class="ms-1 fw-medium">
+                            {% if user_deets.level == 'Beginner' %}
+                                <span class="badge bg-success">{{ user_deets.level }}</span>
+                            {% elif user_deets.level == 'Intermediate' %}
+                                <span class="badge bg-warning">{{ user_deets.level }}</span>
+                            {% elif user_deets.level == 'Advanced' %}
+                                <span class="badge bg-secondary">{{ user_deets.level }}</span>
+                            {% elif user_deets.level == 'Expert' %}
+                                <span class="badge bg-info">{{ user_deets.level }}</span>
+                            {% else %}
+                                <span class="badge bg-success">Beginner</span>
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-12 col-12">
+                        <!-- Card -->
+                        <div class="card mb-4">
+                            <!-- Card body -->
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between mb-3 lh-1">
+                                    <div>
+                                        <span class="fs-6 text-uppercase fw-semi-bold">Total games</span>
+                                    </div>
+                                    <div>
+                                        <span class=" fe fe-grid fs-3 text-primary"></span>
+                                    </div>
+                                </div>
+                                <h2 class="fw-bold mb-1">
+                                    {{ total_played }} 
+                                </h2>
+<!--                                 <span class="text-success fw-semi-bold"><i class="fe fe-trending-up me-1"></i>+1200</span>
+                                <span class="ms-1 fw-medium">Students</span> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-12 col-12">
+                        <!-- Card -->
+                        <div class="card mb-4">
+                            <!-- Card body -->
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between mb-3 lh-1">
+                                    <div>
+                                        <span class="fs-6 text-uppercase fw-semi-bold">Connections</span>
+                                    </div>
+                                    <div>
+                                        <span class=" fe fe-users fs-3 text-primary"></span>
+                                    </div>
+                                </div>
+                                <p class="fw-bold mb-1">
+                                    {{ followers }} followers
+                                    
+                                </p>
+                                <!-- <span class="text-success fw-semi-bold"><i class="fe fe-trending-up me-1"></i>+200</span> -->
+                                <span class="ms-1 fw-medium">{{ following }} following</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-8 col-lg-12 col-md-12 col-12">
+                        <!-- Card -->
+                        <div class="card mb-4">
+                            <!-- Card header -->
+                            <div class="card-header align-items-center card-header-height d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h4 class="mb-0">Earnings</h4>
+                                </div>
+                                <div>
+                                    <div class="dropdown dropstart">
+                                        <a class="btn-icon btn btn-ghost btn-sm rounded-circle" href="#" role="button" id="courseDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fe fe-more-vertical"></i>
+                                        </a> 
+                                        <div class="dropdown-menu" aria-labelledby="courseDropdown1">
+                                            <span class="dropdown-header">Actions</span>
+                                            <a class="dropdown-item" href="#"><i class="fe fe-shopping-cart dropdown-item-icon "></i>Purchase</a>
+                                            <a class="dropdown-item" href="#"><i class="fe fe-lock dropdown-item-icon "></i>Save</a>
+                                            {% if player_membership|lower == 'premium' %}
+                                                <a class="dropdown-item" href="#"><i class="fe fe-credit-card dropdown-item-icon "></i>Withdraw</a>
+                                            {% endif %}
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card body -->
+                            <div class="card-body">
+                                <!-- Earning chart -->
+                                <!-- <div id="earning" class="apex-charts"></div> -->
+                                <h4 style="color: green;">&#x20A6; {{ player_wallet_balance }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-12 col-md-12 col-12">
+                        <!-- Card -->
+                        <div class="card mb-4">
+                            <!-- Card header -->
+                            <div class="card-header align-items-center card-header-height  d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h4 class="mb-0">Referrals</h4>
+                                </div>
+                                <div>
+                                    <div class="dropdown dropstart">
+                                        <a class="btn-icon btn btn-ghost btn-sm rounded-circle" href="#" role="button" id="courseDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fe fe-more-vertical"></i>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="courseDropdown2">
+                                            <span class="dropdown-header">Actions</span>
+                                            <a class="dropdown-item" href="#"><i class="fe fe-check dropdown-item-icon "></i>View bonus</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card body -->
+                            <div class="card-body">
+                                <div id="traffic" class="apex-charts d-flex justify-content-center"></div>
+                                <h4>{{my_referrals}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ranking -->
+                <div class="row">
+                    <div class="col-xl-8 col-lg-12 col-md-12 col-12 mb-4">
+                        <!-- Card -->
+                        <div class="card h-100">
+                            <!-- Card header -->
+                            <div class="card-header d-flex align-items-center
+                              justify-content-between card-header-height">
+                                <h4 class="mb-0">RPS Leaderboard</h4> 
+                                <!-- <a href="#" class="btn btn-outline-secondary btn-sm">View all</a> -->
+                            </div>
+
+                            <!-- Card body -->
+                            <div class="card-body">
+
+                                <div class="table-invoice table-responsive">
+                                    <table class="table mb-0 text-nowrap table-centered table-hover">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th scope="col">Rank</th>
+                                                <th scope="col">Player</th>
+                                                <th scope="col">Wins(%)</th>
+                                                <th scope="col">Location</th>
+                                                <th scope="col">Total Games</th>
+                                                <th scope="col">Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for rank in ranks %}
+                                                {% with top_rank=rank.user.username  %}
+                                            <tr>
+                                                <td><a href="">#{{ forloop.counter }}</a></td>
+                                                <td>{{ top_rank }}</td>
+                                                <td>{{ rank.win_percentage|floatformat:2 }}</td>
+                                                <td><span class="">{{ rank.user.profile.state }}</span></td>
+                                                <td>{{ rank.total_played }}</td>
+                                                <td><a class="nav-link" href="#">View</a></td>
+                                            </tr>
+                                                {% endwith %}
+                                            {% endfor %}    
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div class="col-xl-4 col-lg-12 col-md-12 col-12 mb-4">
+                        <!-- Card -->
+                        <div class="card h-100">
+                            <!-- Card header -->
+                            <div class="card-header card-header-height d-flex align-items-center">
+                                <h4 class="mb-0">Compensation Ranking
+                                </h4>
+                            </div>
+                            <!-- Card body -->
+                            <div class="card-body">
+                                <div class="table-invoice table-responsive">
+                                <table class="table mb-0 text-nowrap table-centered table-hover">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th scope="col">Rank</th>
+                                            <th scope="col">Player</th>
+                                            <th scope="col">Total Games</th>
+                                            <th scope="col">Location</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for game in games_played %}
+                                            {% with most_gamer=game.user.username  %}
+                                        <tr>
+                                            <td><a href="">#{{ forloop.counter }}</a></td>
+                                            <td>{{ most_gamer }}</td>
+                                            <td>{{ game.total_played }}</td>
+                                            <td><span class="">{{ game.user.profile.state }}</span></td>
+                                        </tr>
+                                            {% endwith %}
+                                        {% endfor %}    
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+{% endblock %}
+
+res = select * from sme_invoice_table where transaction_id = transaction_no
+return res

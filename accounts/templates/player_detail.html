@@ -1,0 +1,128 @@
+{% extends 'dashboard_base.html' %}
+{% load crispy_forms_tags %}
+
+      <div class="card-body">
+        <a href="#" class="btn btn-outline-warning">Follow </a>
+        <a href="#" class="btn btn-outline-danger">Unfollow</a>
+      </div>
+
+{% block content %}
+
+<h4>Player {{ player }}</h4> <hr>
+
+<div class="col-lg-9 col-md-8 col-12">
+
+<div class="row" style="margin:auto; display:;">
+  <div class="col-xl-2"></div>
+  <div class="col-xl-4" style="margin:;">
+    <div class="card card animated slideInLeft" style="min-width: 10rem;">
+      <img src="{{ player.profile.image.url }}" height="180px" width="" class="card-img-top rounded-circle" alt="player_photo"> <hr>
+      <div class="card-body">
+        <h5 class="card-title">{{ player.username }}</h5>
+        {% if player_deet.level == 'Beginner' %}
+          <span class="badge badge-success">{{ player_deet.level }}</span>
+        {% elif player_deet.level == 'Intermediate' %}
+          <span class="badge badge-warning">{{ player_deet.level }}</span>
+        {% elif player_deet.level == 'Advanced' %}
+          <span class="badge badge-info">{{ player_deet.level }}</span>
+        {% else %}
+          <span class="badge badge-danger">{{ player_deet.level }}</span>
+        {% endif %} <br>
+        <small><b>Followers:</b> {{tot_followers}}</small> <br>
+        <hr>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li style="color:darkred;" class="list-group-item">Current rank: {{position}}</li>
+        <li style="color:royalblue;" class="list-group-item">Win percentage: {{ win_percentage }}</li>
+        <li style="color: blueviolet;" class="list-group-item">Total games: {{total_played}}</li>
+      </ul>
+      <div class="card-body">
+      {% if request.user != player %}
+        {% if user.username in follower_list %}
+          <a href="{% url 'unfollow' username=player.username %}" class="btn btn-outline-danger">Unfollow</a>
+        {% else %}
+          <a href="{% url 'follow' username=player.username %}" class="btn btn-outline-warning">Follow</a>
+        {% endif %}
+      {% endif %}
+      </div>
+
+    </div>
+  </div>
+
+  <hr>
+
+  {% if player != request.user %}
+  <div class="col-xl-6">  
+    <div class="row" style="display:inline-flex;">
+      <div class="col-sm-6" style="margin:;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">RPS Game</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Challenge</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6" style="margin-top:5px;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Hangman Game</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Challenge</a>
+          </div>
+        </div>
+      </div>
+
+       <div class="col-sm-6" style="margin-top:5px;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Hangman Game</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Challenge</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <div class="col-xl-6">  
+    <div class="row" style="display:inline-flex;">
+      <div class="col-sm-6" style="margin:;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">RPS Game</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="{% url 'play-game' %}" class="btn btn-primary">Play</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6" style="margin:;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Hangman Game</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Play</a>
+          </div>
+        </div>
+      </div>
+
+       <div class="col-sm-6" style="margin-top:10px;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Hangman Game</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Play</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+</div>
+
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+ <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+<div class="col-4" style="margin: auto;">
+<h2>Register Now</h2>
+  <form class="form-signin animated animate__animated animate__fadeInDown animate__slower" method="post">
+    <!-- <img class="mb-4" src="/docs/4.6/assets/brand/bootstrap-solid.svg" alt="logo" width="72" height="72"> -->
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Sign up</button>
+  </form>
+  
+  <div class="border-top pt-3">
+      <small class="text-muted"> 
+        Already a member? <a href="{% url 'login' %}" class="ml-2">Login</a>
+      </small>
+    </div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,20 @@
+<div class="pt-2 pb-4">
+  <!-- Pagination -->
+  <nav>
+      <ul class="pagination justify-content-center mb-0">
+        {% if page.has_previous %}
+          <li class="page-item">
+              <a class="page-link mx-1 rounded" href="?page={{ page.previous_page_number }}"><i class="mdi mdi-chevron-left"></i></a>
+          </li>
+           {% endif %}
+          <li class="page-item active">
+              <a class="page-link mx-1 rounded" href="#">Page {{ page.number }} of {{ page.paginator.num_pages }}.</a>
+          </li>
+          {% if page.has_next %}
+          <li class="page-item">
+              <a class="page-link mx-1 rounded" href="?page={{ page.next_page_number }}"><i class="mdi mdi-chevron-right"></i></a>
+          </li>
+           {% endif %}
+      </ul>
+  </nav>
+</div>

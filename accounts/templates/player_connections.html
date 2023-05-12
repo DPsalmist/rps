@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+<h4>Player Connections</h4>
+<hr>
+
+<div class="row" style="display:flex;">
+  <div class="col-6 col-lg-4">
+    <h6>Your Followers: ({{tot_followers}})</h6>
+    {% for follower in followers %}
+    <div class="card animate__animated animate__slideInRight animate__slower" style="margin-bottom: 10px;">
+      <div class="card-body">
+        <img src="{{ follower.follower.profile.image.url }}" height="100px" width="80px" class="card-img-top rounded-circle" alt="player_photo"> <hr>
+        <h5 class="card-title">{{ follower.follower.username }}</h5>
+        <p class="card-text">With supporting text and content.</p>
+        <a href="{% url 'player-detail' follower.follower.pk %}" class="btn btn-primary">View</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <!-- <div class="col-3"></div> -->
+  <div class="col-6 col-lg-4">
+    <h6>You're currently following: ({{tot_following}})</h6>
+    {% for followee in following %}
+    <div class="card animate__animated animate__slideInLeft animate__slower" style="margin-bottom: 10px;">
+      <div class="card-body">
+        <img src="{{ followee.followed.profile.image.url }}" height="100px" width="80px" class="card-img-top rounded-circle" alt="player_photo"> <hr>
+        <h5 class="card-title">{{ followee.followed.username }}</h5>
+        <p class="card-text">With supporting text and content.</p>
+        <a href="{% url 'player-detail' followee.followed.pk %}" class="btn btn-primary">View</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Pagination -->
+ {% include "pagination.html" with page=players %}
+
+{% endblock content %}

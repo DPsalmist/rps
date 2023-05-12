@@ -1,0 +1,637 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jankens is an online fun and interactive game that allows you as a player to play the rock-paper-scissors game with the computer and earn real money. You can also earn money via other ways. It's important to know that this isn;t a get-rich-quick sheme or a ponzi scheme. It's a game like any other game with a touch of class and love poured into it. It offers various degree of excitement and critical thinking as you get to channel your focus to stay in the top ranking; for the premium users. ">
+    <meta name="keywords" content="rock, paper, scissors, rps, rock-paper-scissors, Jankens, Rashombo, online game, real time game">
+    <meta name="author" content="Damilare Samuel, Sodbridge Academy">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8S4MT3EYG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-M8S4MT3EYG');
+    </script>
+
+    <!-- Favicon icon-->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/favicon/logo.png' %}">
+
+    <!-- Libs CSS -->
+    <link href="{% static 'assets/fonts/feather/feather.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/libs/bootstrap-icons/font/bootstrap-icons.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/libs/@mdi/font/css/materialdesignicons.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/libs/simplebar/dist/simplebar.min.css' %}" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/theme.min.css' %}">
+
+    <title>Player Dashboard - Easy and fun game to win real cash!</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-default">
+        <div class="container-fluid px-0">
+            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'assets/images/brand/logo/logo.png' %}"
+				alt="jankens_logo" style="height:30px;" class="" > Jenkens</a>
+            <!-- Mobile view nav wrap -->
+            <ul class="navbar-nav navbar-right-wrap ms-auto d-lg-none d-flex nav-top-wrap">
+                <li class="dropdown stopevent">
+                    <a class="btn btn-light btn-icon rounded-circle text-muted indicator indicator-primary" href="#" role="button" data-bs-toggle="dropdown">
+					<i class="fe fe-bell"> </i>
+				</a>
+                    <div class="dropdown-menu dropdown-menu-end shadow">
+                        <div>
+                            <div class="border-bottom px-3 pb-3 d-flex justify-content-between align-items-center">
+                                <span class="h5 mb-0">Notifications</span>
+                                <a href="# " class="text-muted"><span class="align-middle"><i
+										class="fe fe-settings me-1"></i></span></a>
+                            </div>
+                            <ul class="list-group list-group-flush " style="height: 300px;" data-simplebar>
+                                <li class="list-group-item bg-light">
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="#" class="text-body">
+                                                <div class="d-flex">
+                                                    <img src="{% static 'assets/images/avatar/avatar-1.jpg' %}" alt="" class="avatar-md rounded-circle">
+                                                    <div class="ms-3">
+                                                        <h5 class="fw-bold mb-1">Kristin Watson:</h5>
+                                                        <p class="mb-3 text-body">
+                                                            Krisitn Watsan like your comment on course Javascript Introduction!
+                                                        </p>
+                                                        <span class="fs-6 text-muted">
+														<span><span class="fe fe-thumbs-up text-success me-1"></span>2 hours ago,</span>
+                                                        <span class="ms-1">2:19 PM</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-auto text-center me-2">
+                                            <a href="#" class="badge-dot bg-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark as read">
+										</a>
+                                            <div>
+                                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove">
+												<i class="fe fe-x text-muted"></i>
+											</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="#" class="text-body">
+                                                <div class="d-flex">
+                                                    <img src="{% static 'assets/images/avatar/avatar-2.jpg' %}" alt="" class="avatar-md rounded-circle">
+                                                    <div class="ms-3">
+                                                        <h5 class="fw-bold mb-1">Brooklyn Simmons</h5>
+                                                        <p class="mb-3 text-body">
+                                                            Just launched a new Courses React for Beginner.
+                                                        </p>
+                                                        <span class="fs-6 text-muted">
+														<span><span class="fe fe-thumbs-up text-success me-1"></span>Oct 9,
+                                                        </span>
+                                                        <span class="ms-1">1:20 PM</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-auto text-center me-2">
+                                            <a href="#" class="badge-dot bg-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark as unread">
+										</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="#" class="text-body">
+                                                <div class="d-flex">
+                                                    <img src="{% static 'assets/images/avatar/avatar-3.jpg' %}" alt="" class="avatar-md rounded-circle">
+                                                    <div class="ms-3">
+                                                        <h5 class="fw-bold mb-1">Jenny Wilson</h5>
+                                                        <p class="mb-3 text-body">
+                                                            Krisitn Watsan like your comment on course Javascript Introduction!
+                                                        </p>
+                                                        <span class="fs-6 text-muted">
+														<span><span class="fe fe-thumbs-up text-info me-1"></span>Oct 9,
+                                                        </span>
+                                                        <span class="ms-1">1:56 PM</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-auto text-center me-2">
+                                            <a href="#" class="badge-dot bg-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark as unread">
+										</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="#" class="text-body">
+                                                <div class="d-flex">
+                                                    <img src="{% static 'assets/images/avatar/avatar-4.jpg' %}" alt="" class="avatar-md rounded-circle">
+                                                    <div class="ms-3">
+                                                        <h5 class="fw-bold mb-1">Sina Ray</h5>
+                                                        <p class="mb-3 text-body">
+                                                            You earn new certificate for complete the Javascript Beginner course.
+                                                        </p>
+                                                        <span class="fs-6 text-muted">
+														<span><span class="fe fe-award text-warning me-1"></span>Oct 9,
+                                                        </span>
+                                                        <span class="ms-1">1:56 PM</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-auto text-center me-2">
+                                            <a href="#" class="badge-dot bg-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark as unread">
+										</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="border-top px-3 pt-3 pb-0">
+                                <a href="../pages/notification-history.html" class="text-link fw-semi-bold">See all
+								Notifications</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="dropdown ms-2">
+                    <a class="rounded-circle" href="#" role="button" data-bs-toggle="dropdown">
+                        <div class="avatar avatar-md avatar-indicators avatar-online">
+                            <img alt="avatar" src="{{ user.profile.image.url }}" class="rounded-circle">
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end shadow">
+                        <div class="dropdown-item">
+                            <div class="d-flex">
+                                <div class="avatar avatar-md avatar-indicators avatar-online">
+                                    <img alt="avatar" src="{{ user.profile.image.url }}" class="rounded-circle">
+                                </div>
+                                <div class="ms-3 lh-1">
+                                    <h5 class="mb-1">{{ user.username }}</h5>
+                                    <p class="mb-0 text-muted">{{ user.email }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <ul class="list-unstyled">
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-list-group-item dropdown-toggle" href="#">
+								<i class="fe fe-circle me-2"></i>Status
+							</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+										<span class="badge-dot bg-success me-2"></span>Online
+									</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+										<span class="badge-dot bg-secondary me-2"></span>Offline
+									</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+										<span class="badge-dot bg-warning me-2"></span>Away
+									</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+										<span class="badge-dot bg-danger me-2"></span>Busy
+									</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="{% url 'profile' %}">
+								<i class="fe fe-user me-2"></i>Profile
+							</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'subscription-success' %}">
+								<i class="fe fe-star me-2"></i>Subscription
+							</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+								<i class="fe fe-settings me-2"></i>Settings
+							</a>
+                            </li>
+                        </ul>
+                        <div class="dropdown-divider"></div>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'logout' %}">
+								<i class="fe fe-power me-2"></i>Sign Out
+							</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+            <!-- Button -->
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-default"       aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
+    			<span class="icon-bar top-bar mt-0"></span>
+    			<span class="icon-bar middle-bar"></span>
+    			<span class="icon-bar bottom-bar"></span>
+		      </button>
+            <!-- Collapse -->
+            
+            <div class="collapse navbar-collapse" id="navbar-default">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{% url 'home' %}" id="navbarLanding" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarPages" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+                    </li>
+                </ul>
+
+                <!-- Search form -->
+                <form class="mt-3 mt-lg-0 ms-lg-3 d-flex align-items-center">
+                    <span class="position-absolute ps-3 search-icon">
+					<i class="fe fe-search"></i>
+				</span>
+                    <input type="search" class="form-control ps-6" placeholder="Search Players">
+                </form>
+                <div class="ms-auto d-flex align-items-center">
+                    <a href="#" class="form-check form-switch theme-switch btn btn-light btn-icon rounded-circle ">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+			         </a>
+
+
+                    <ul class="navbar-nav navbar-right-wrap ms-2 d-none d-lg-block">
+                        <li class="dropdown d-inline-block stopevent">
+                            <a class="btn btn-light btn-icon rounded-circle text-muted indicator indicator-primary" href="#" role="button" id="dropdownNotificationSecond" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fe fe-bell"> </i>
+					</a>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg" aria-labelledby="dropdownNotificationSecond">
+                                <div>
+                                    <div class="border-bottom px-3 pb-3 d-flex justify-content-between align-items-center">
+                                        <span class="h5 mb-0">Notifications</span>
+                                        <a href="# " class="text-muted"><span class="align-middle"><i
+											class="fe fe-settings me-1"></i></span></a>
+                                    </div>
+                                    <ul class="list-group list-group-flush  " style="height: 300px;" data-simplebar>
+                                        <li class="list-group-item bg-light">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <a class="text-body" href="#">
+                                                        <div class="d-flex">
+                                                            <img src="{% static 'assets/images/avatar/avatar-1.jpg' %}" alt="" class="avatar-md rounded-circle">
+                                                            <div class="ms-3">
+                                                                <h5 class="fw-bold mb-1">Kristin Watson:</h5>
+                                                                <p class="mb-3 text-body">
+                                                                    Krisitn Watsan like your comment on course Javascript Introduction!
+                                                                </p>
+                                                                <span class="fs-6 text-muted">
+															<span><span
+																	class="fe fe-thumbs-up text-success me-1"></span>2 hours ago,</span>
+                                                                <span class="ms-1">2:19 PM</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-auto text-center me-2">
+
+                                                    <a href="#" class="badge-dot bg-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark as read">
+											</a>
+                                                    <div>
+                                                        <a href="#" class="bg-transparent" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove">
+													<i class="fe fe-x text-muted"></i>
+												</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <a class="text-body" href="#">
+                                                        <div class="d-flex">
+                                                            <img src="{% static 'assets/images/avatar/avatar-2.jpg' %}" alt="" class="avatar-md rounded-circle">
+                                                            <div class="ms-3">
+                                                                <h5 class="fw-bold mb-1">Brooklyn Simmons</h5>
+                                                                <p class="mb-3 text-body">
+                                                                    Just launched a new Courses React for Beginner.
+                                                                </p>
+                                                                <span class="fs-6 text-muted">
+															<span><span
+																	class="fe fe-thumbs-up text-success me-1"></span>Oct 9,
+                                                                </span>
+                                                                <span class="ms-1">1:20 PM</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-auto text-center me-2">
+                                                    <a href="#" class="badge-dot bg-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark as unread">
+											</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="border-top px-3 pt-3 pb-0">
+                                        <a href="../pages/notification-history.html" class="text-link fw-semi-bold">See
+									all Notifications</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="dropdown ms-2 d-inline-block">
+                            <a class="rounded-circle" href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                <div class="avatar avatar-md avatar-indicators avatar-online">
+                                    <img alt="avatar" src="{{ user.profile.image.url }}" class="rounded-circle">
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <div class="dropdown-item">
+                                    <div class="d-flex">
+                                        <div class="avatar avatar-md avatar-indicators avatar-online">
+                                            <img alt="avatar" src="{{ user.profile.image.url }}" class="rounded-circle">
+                                        </div>
+                                        <div class="ms-3 lh-1">
+                                            <h5 class="mb-1">{{ user }}</h5>
+                                            <p class="mb-0 text-muted">{{ user.email }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <ul class="list-unstyled">
+                                    <li class="dropdown-submenu dropstart-lg">
+                                        <a class="dropdown-item dropdown-list-group-item dropdown-toggle" href="#">
+									<i class="fe fe-circle me-2"></i>Status
+								</a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a class="dropdown-item" href="#">
+											<span class="badge-dot bg-success me-2"></span>Online
+										</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#">
+											<span class="badge-dot bg-secondary me-2"></span>Offline
+										</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#">
+											<span class="badge-dot bg-warning me-2"></span>Away
+										</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#">
+											<span class="badge-dot bg-danger me-2"></span>Busy
+										</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'update-profile' %}">
+									<i class="fe fe-user me-2"></i>Profile
+								</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'subscription-success' %}">
+									<i class="fe fe-star me-2"></i>Subscription
+								</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+									<i class="fe fe-settings me-2"></i>Settings
+								</a>
+                                    </li>
+                                </ul>
+                                <div class="dropdown-divider"></div>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'logout' %}">
+									<i class="fe fe-power me-2"></i>Sign Out
+								</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <main>
+        <section class="pt-5 pb-5">
+            <div class="container">
+                <!-- User info -->
+                <div class="row align-items-center">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                        <!-- Bg -->
+                        {% if user.profile.banner_image %} 
+                        <div class="pt-16 rounded-top-md" style="background: url({{ user.profile.banner_image.url }}) no-repeat; width:100%; max-height:; background-size:cover;"> 
+                        </div>
+                        {% else %}
+                        <div class="pt-16 rounded-top-md" style="
+								background: url({% static 'assets/images/background/profile-bg.jpg' %}) no-repeat;
+								background-size: cover;">        
+                        </div>
+                        {% endif %}
+                        <div class="card rounded-0 rounded-bottom  px-4  pt-2 pb-4 ">
+                            <div class="d-flex align-items-end justify-content-between  ">
+                                <div class="d-flex align-items-center">
+                                    <div class="me-2 position-relative d-flex justify-content-end align-items-end mt-n5">
+                                        <img src="{{ user.profile.image.url }}" class="avatar-xl rounded-circle border border-4 border-white" alt="">
+                                    </div>
+                                    <div class="lh-1">
+                                        <h2 class="mb-0">{{ user.username }}
+                                            <!-- <a href="#" class="text-decoration-none" data-bs-toggle="tooltip" data-placement="top" title="Beginner">
+                							     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                								<rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE"></rect>
+                								<rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9"></rect>
+                								<rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9"></rect>
+                							  </svg>
+                							</a> -->
+                                            {% if user_deets.level == 'Beginner' %}
+                                                <span class="badge badge-success">{{ user_deets.level }}</span>
+                                            {% elif user_deets.level == 'Intermediate' %}
+                                            <span class="badge badge-warning">{{ user_deets.level }}</span>
+                                            {% elif user_deets.level == 'Advanced' %}
+                                                <span class="badge badge-info">{{ user_deets.level }}</span>
+                                            {% elif user_deets.level == 'Expert' %}
+                                                <span class="badge badge-info">{{ user_deets.level }}</span>
+                                            {% else %}
+                                                <span class="badge badge-success">Beginner</span>
+                                            {% endif %}
+                                        </h2>
+                                        <p class=" mb-0 d-block">@{{user.referral_code}}</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <a href="{% url 'update-profile' %}" class="btn btn-primary btn-sm d-none d-md-block">Account
+						  Setting</a> It is {% now "jS F Y H:i" %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+
+
+                <div class="row mt-0 mt-md-4">
+                    <div class="col-lg-3 col-md-4 col-12">
+                        <!-- Side navbar -->
+                        <nav class="navbar navbar-expand-md navbar-light shadow-sm mb-4 mb-lg-0 sidenav">
+                            <!-- Menu -->
+                            <a class="d-xl-none d-lg-none d-md-none text-inherit fw-bold" href="#">Menu</a>
+                            <!-- Button -->
+                            <button class="navbar-toggler d-md-none icon-shape icon-sm rounded bg-primary text-light" type="button"  data-bs-toggle="collapse" data-bs-target="#sidenav" aria-controls="sidenav" aria-expanded="false"      aria-label="Toggle navigation">
+                            <span class="fe fe-menu"></span>
+                             </button>
+                            <!-- Collapse navbar -->
+                            <div class="collapse navbar-collapse" id="sidenav">
+                                <div class="navbar-nav flex-column">
+                                    <span class="navbar-header">Dashboard</span>
+                                    <ul class="list-unstyled ms-n2 mb-4">
+                                        <!-- Nav item -->
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'dashboard' %}"><i class="fe fe-home nav-icon"></i>My dashboard</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'profile' %}"><i class="fe fe-user nav-icon"></i>Profile</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'my-wallet' %}"><i class="fe fe-pie-chart nav-icon"></i>Wallet</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'players' %}"><i class="fe fe-users nav-icon"></i>Players</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'play-game' %}"><i class="fe fe-toggle-right nav-icon"></i>Play game</a>
+                                        </li>
+                                        <li class="nav-item  ">
+                                            <a class="nav-link" href="student-quiz.html"><i
+                                                class="fe fe-mail nav-icon"></i>New post</a>
+                                        </li>
+                                    </ul>
+                                    <span class="navbar-header">Subscription</span>
+                                    <ul class="list-unstyled ms-n2 mb-4">
+                                        <!-- Nav item -->
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="{% url 'subscription-success' %}"><i class="fe fe-calendar nav-icon"></i>My
+                                            Subscriptions
+                                        </a>
+                                        </li>
+                                        <!-- Nav item -->
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#"><i class="fe fe-credit-card nav-icon"></i>Billing
+                                            Info</a>
+                                        </li>
+                                        <!-- Nav item -->
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#"><i class="fe fe-credit-card nav-icon"></i>Payment</a>
+                                        </li>
+                                        <!-- Nav item -->
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#"><i class="fe fe-clipboard nav-icon"></i>Invoice</a>
+                                        </li>
+                                    </ul>
+                                    <!-- Navbar header -->
+                                    <span class="navbar-header">Account Settings</span>
+                                    <ul class="list-unstyled ms-n2 mb-0">
+                                        <!-- Nav item -->
+                                        
+                                        <!-- Nav item -->
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#"><i class="fe fe-lock nav-icon"></i>Change password</a>
+                                        </li>
+                                        <!-- Nav item -->
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#"><i class="fe fe-refresh-cw nav-icon"></i>Social
+                                            Profiles</a>
+                                        </li>
+                                        <!-- Nav item -->
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#"><i class="fe fe-bell nav-icon"></i>Notifications</a>
+                                        </li>
+                                        <!-- Nav item -->
+                                        <!-- <li class="nav-item">
+                                            <a class="nav-link " href="#"><i class="fe fe-user nav-icon"></i>Linked Accounts</a>
+                                        </li> -->
+                                        <!-- Nav item -->
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'logout' %}"><i class="fe fe-power nav-icon"></i>Sign Out</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+
+                    {% block content %}
+
+                    {% endblock content %}
+                </div>
+            </div>
+        </section>
+    </main>
+
+ 
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row align-items-center g-0 border-top py-2">
+                <!-- Desc -->
+                <div class="col-md-6 col-12 text-center text-md-start">
+                    <span>© <span id="copyright">
+                    <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+                </span>Jenkens. All Rights Reserved.</span>
+                </div>
+                <!-- Links -->
+                <div class="col-12 col-md-6">
+                    <nav class="nav nav-footer justify-content-center justify-content-md-end">
+                        <a class="nav-link active ps-0" href="#">Privacy</a>
+                        <a class="nav-link" href="#">Terms </a>
+                        <a class="nav-link" href="#">Feedback</a>
+                        <a class="nav-link" href="#">Support</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Scripts -->
+    <!-- Libs JS -->
+    <script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/libs/simplebar/dist/simplebar.min.js' %}"></script>
+    <!-- Theme JS -->
+    <script src="{% static 'assets/js/theme.min.js"></script>
+
+</body>
+
+</html>

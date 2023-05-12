@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+  <div class="jumbotron">
+    <h1 class="display-4">Hello, world!</h1>
+    <p class="lead">Welcome to the Gammies.</p>
+    <hr class="my-4">
+    <p>It uses the best of both worlds to bring your best imaginations to reality. Enjoy FREE access to numerous games to build your 
+      critical thinking and problem solving ability.
+
+    <br> Get started now and experience the gammies world today.</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'play-game' %}" role="button">Get started</a>
+  </div>
+  <hr>
+  <div class="card">
+  <div class="card-header">
+    Hello Data
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">We have a total of {{ users }} players registered!</h4> <hr>
+    <p class="card-title">We have a total of {{ games }} games created!</p>
+    <p class="card-text">With full support and additional games coming soon.</p>
+    <a href="{% url 'play-game' %}" class="btn btn-primary">Earn Today!</a>
+  </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>
+
+{% endblock content %}

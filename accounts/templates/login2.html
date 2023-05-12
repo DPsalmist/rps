@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jankens is an online fun and interactive game that allows you as a player to play the rock-paper-scissors game with the computer and earn real money. You can also earn money via other ways. It's important to know that this isn;t a get-rich-quick sheme or a ponzi scheme. It's a game like any other game with a touch of class and love poured into it. It offers various degree of excitement and critical thinking as you get to channel your focus to stay in the top ranking; for the premium users. ">
+    <meta name="keywords" content="rock, paper, scissors, rps, rock-paper-scissors, Jankens, Rashombo, online game, real time game">
+    <meta name="author" content="Damilare Samuel, Sodbridge Academy">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8S4MT3EYG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-M8S4MT3EYG');
+    </script>
+
+    <!-- Favicon icon-->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/favicon/logo.png' %}">
+
+    <!-- Libs CSS -->
+    <link href="{% static 'assets/fonts/feather/feather.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/libs/bootstrap-icons/font/bootstrap-icons.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/libs/@mdi/font/css/materialdesignicons.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/libs/simplebar/dist/simplebar.min.css' %}" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/theme.min.css' %}">
+
+    <title>Jankens - Easy and fun game to win real cash!</title>
+</head>
+
+<body>
+    <!-- Page content -->
+    <main>
+        <section class="container d-flex flex-column">
+            <div class="row align-items-center justify-content-center g-0 min-vh-100">
+
+                <div class="col-lg-5 col-md-8 py-8 py-xl-0">
+                    <!-- Card -->
+                    <div class="card shadow ">
+                        <!-- Card body -->
+                        <div class="card-body p-6">
+                            <div class="mb-4">
+                                <a href="{% url 'landing' %}"><img src="{% static 'assets/images/brand/logo/logo.png' %}" style="height: 30px;" class="mb-4" alt=""></a>
+                                <h1 class="mb-1 fw-bold">Sign in</h1>
+                                <span>Don’t have an account? <a href="{% url 'signup' %}" class="ms-1">Sign up</a></span>
+                            </div>
+                            <!-- Form -->
+                            <form method="POST">
+                                {% csrf_token %}
+                                <!-- Username -->
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Username</label>
+                                    <input type="" id="email" class="form-control" name="username" placeholder="Username here" required>
+                                </div>
+                                <!-- Password -->
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" id="password" class="form-control" name="password" placeholder="**************" required>
+                                </div>
+                                <!-- Checkbox -->
+                                <div class="d-lg-flex justify-content-between align-items-center mb-4">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="rememberme">
+                                        <label class="form-check-label " for="rememberme">Remember me</label>
+                                    </div>
+                                    <div>
+                                        <a href="{% url 'password-reset' %}">Forgot your password?</a>
+                                    </div>
+                                </div> <hr class="my-4">
+
+                                <div>
+                                    <!-- Button -->
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-primary ">Sign in</button>
+                                    </div>
+                                </div>
+                                                                
+                                <!-- <div class="mt-4 text-center">
+                                    
+                                    <a href="#" class="btn-social btn-social-outline btn-facebook">
+                  <i class="mdi mdi-facebook fs-4"></i>
+                </a>
+
+                                    <a href="#" class="btn-social btn-social-outline btn-twitter">
+                  <i class="mdi mdi-twitter fs-4"></i>
+                </a>
+                                    
+                                    <a href="#" class="btn-social btn-social-outline btn-linkedin">
+                  <i class="mdi mdi-linkedin"></i>
+                </a>
+
+                                    <a href="#" class="btn-social btn-social-outline btn-github">
+                  <i class="mdi mdi-github"></i>
+                </a>
+                                </div> -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Scripts -->
+
+    <!-- Libs JS -->
+    <script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/libs/simplebar/dist/simplebar.min.js' %}"></script>
+    <!-- Theme JS -->
+    <script src="{% static 'assets/js/theme.min.js"></script>
+
+</body>
+</html>

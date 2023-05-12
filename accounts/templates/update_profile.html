@@ -1,0 +1,65 @@
+{% extends 'dashboard_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="col-lg-9 col-md-8 col-12">
+	<div class="media animated animate__animated animate__fadeInRight animate__normal">
+		<img src="{{ user.profile.image.url }}" height="100px;" width="100px;" class="rounded-circle account-img"> <br>
+		<div class="media-body" style="margin:10px;"> <br>
+			<h2 class="accoubt-heading">{{ user.username }}</h2>
+			<p class="text-secondary">{{ user.referral_code }} 
+
+			<a href="whatsapp://send?text=Check%20out%20this%20referral%20link:%20https://example.com/referral/?code={{user.referral_code}}">Share via <i class="fab fa-whatsapp"></i></a>
+			<a href="mailto:example@example.com">
+  <i class="far fa-envelope"></i>
+</a>
+			<!-- Email share link -->
+			<a href="mailto:?subject=Join%20the%20RPS%20game%20with%20my%20referral%20link&body=Hey,%20check%20out%20this%20referral%20link:%20https://example.com/referral/?code={{user.referral_code}}">Share referral code via <i class="far fa-envelope"></i></a>
+			<!-- <button id="copy-btn" class="btn btn-primary" onclick="copyToClipboard()">Copy to clipboard</button> -->
+			<!-- <button id="copyBtn"class="btn btn-primary"   data-clipboard-target="#referralLink">Copy to Clipboard</button>
+			<input type="text" id="referralLink" value="https://example.com/signup?ref=YOUR_REFERRAL_CODE" /> -->
+			<br>{{ user.email }}</p>
+		</div>
+	</div> <br>
+	<!-- Form here -->
+	<form method="POST" enctype="multipart/form-data" class="animated animate__animated animate__fadeInUp animate__slower">
+		<!-- cross site request forfery token for security against attacks -->
+		{%  csrf_token %}
+		<fieldset class="form-group">
+		<legend class="border-bottom mb-4">Account Info</legend>
+			{{ u_form | crispy }} 
+			{{ p_form | crispy }} 
+		</fieldset> <br>
+		<div class="form-group">
+			<button class="btn btn-outline-primary" type="submit">Update profile</button>
+		</div>
+	</form>
+</div>
+
+
+<script>
+    function copyToClipboard() {
+        /* Get the text field */
+        var copyText = document.getElementById("my-text");
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+
+        /* Alert the copied text */
+        alert("Copied the text: " + copyText.value);
+
+        // second one
+        document.getElementById("copyBtn").addEventListener("click", function() {
+        var copyText = document.getElementById("referralLink");
+        copyText.select();
+        document.execCommand("copy");
+        alert("Copied the text: " + copyText.value);
+    });
+    }
+</script>
+
+{% endblock content %}

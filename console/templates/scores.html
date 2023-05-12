@@ -1,0 +1,17 @@
+<!-- In your game app folder, create a new folder called templates, and create three new files called game_interface.html, game_results.html, and scores.html -->
+<!-- game_interface.html -->
+<html>
+    <head>
+        <title>Rock Paper Scissors Game</title>
+    </head>
+    <body>
+        <form method="POST" action="{% url 'play_game' %}">
+            {% csrf_token %}
+            <input type="radio" name="user_choice" value="rock">Rock<br>
+            <input type="radio" name="user_choice" value="paper">Paper<br>
+            <input type="radio" name="user_choice" value="scissors">
+
+            <button type="submit">Play</button>
+        </form>
+    </body>
+</html>

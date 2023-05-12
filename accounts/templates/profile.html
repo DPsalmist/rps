@@ -1,0 +1,120 @@
+{% extends 'dashboard_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<div class="col-lg-9 col-md-8 col-12">
+                        <!-- Card -->
+                        <div class="card">
+                            <!-- Card header -->
+                            <div class="card-header">
+                                <h3 class="mb-0">Profile Details</h3>
+                                <p class="mb-0">
+                                    You have full control to manage your own account setting.
+                                </p>
+                            </div>
+                            <!-- Card body -->
+                            <div class="card-body">
+                                <div class="d-lg-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center mb-4 mb-lg-0">
+                                        <img src="{{ user.profile.image.url }}" id="img-uploaded" class="avatar-xl rounded-circle" alt="player_picture">
+                                        <div class="ms-3">
+                                            <h4 class="mb-0">Your avatar</h4>
+                                            <p class="mb-0">
+                                                PNG or JPG no bigger than 800px wide and tall.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <a href="{% url 'update-profile' %}" class="btn btn-primary btn-sm">Update</a>
+                                        <!-- <a href="#" class="btn btn-outline-danger btn-sm">Delete</a> -->
+                                    </div>
+                                </div>
+                                <hr class="my-5">
+                                <div>
+                                    <h4 class="mb-0">Personal Details</h4>
+                                    <p class="mb-4">
+                                        Edit your personal information and address.
+                                    </p>
+                                    <!-- Form -->
+                                    <form class="row">
+                                        <!-- First name -->
+                                        <div class="mb-3 col-12 col-md-6">
+                                            <label class="form-label" for="fname">First Name</label>
+                                            <input type="text" id="fname" class="form-control" value="{{ user.profile.first_name }}" readonly>
+                                        </div>
+                                        <!-- Last name -->
+                                        <div class="mb-3 col-12 col-md-6">
+                                            <label class="form-label" for="lname">Last Name</label>
+                                            <input type="text" id="lname" class="form-control" value="{{ user.profile.last_name }}" readonly>
+                                        </div>
+                                        <!-- Phone -->
+                                        <div class="mb-3 col-12 col-md-6">
+                                            <label class="form-label" for="phone">Phone</label>
+                                            <input type="text" id="phone" class="form-control" value="{{ user.profile.phone_no }}" readonly>
+                                        </div>
+                                        <!-- Birthday -->
+                                        <div class="mb-3 col-12 col-md-6">
+                                            <label class="form-label" for="birth">Gender</label>
+                                            <input class="form-control flatpickr" type="text" value="{{ user.profile.gender }}" id="birth" name="birth">
+                                        </div>
+                                        <!-- Address -->
+                                        <div class="mb-3 col-12 col-md-6">
+                                            <label class="form-label" for="address">LGA</label>
+                                            <input type="text" id="address" class="form-control" value="{{ user.profile.lga }}" readonly>
+                                        </div>
+                                        <!-- Address -->
+                                        <div class="mb-3 col-12 col-md-6">
+                                            <label class="form-label" for="address2">Address Line</label>
+                                            <input type="text" id="address2" class="form-control" value="{{ user.profile.address }}" readonly>
+                                        </div>
+                                        <!-- State -->
+                                        <div class="mb-3 col-12 col-md-6">
+                                            <label class="form-label">State</label>
+                                            <input type="text" id="address2" class="form-control" value="{{ user.profile.state }}" readonly>
+                                        </div>
+                                        <!-- Country -->
+                                        <div class="mb-3 col-12 col-md-6">
+                                            <label class="form-label">Nationality</label>
+                                            <input type="text" id="address2" class="form-control" value="{{ user.profile.nationality }}" readonly>
+                                        </div>
+                                       <!--  <div class="col-12">
+                                           
+                                            <a  href="{% url 'update-profile' %}" class="btn btn-primary" type="">
+											Update Profile
+										
+                                        </div> -->
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+<script>
+    function copyToClipboard() {
+        /* Get the text field */
+        var copyText = document.getElementById("my-text");
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+
+        /* Alert the copied text */
+        alert("Copied the text: " + copyText.value);
+
+        // second one
+        document.getElementById("copyBtn").addEventListener("click", function() {
+        var copyText = document.getElementById("referralLink");
+        copyText.select();
+        document.execCommand("copy");
+        alert("Copied the text: " + copyText.value);
+    });
+    }
+</script>
+
+{% endblock content %}

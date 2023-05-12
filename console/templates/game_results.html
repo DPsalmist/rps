@@ -1,0 +1,51 @@
+{% extends 'dashboard_base.html' %}
+
+{% block content %}
+
+<div class="col-lg-9 col-md-8 col-12">
+  <div class="row">
+
+  <div class="col-lg-7 col-md-6 col-12" style="text-align:; margin:auto;">  
+    <h3>Rock Paper Scissors</h3>
+    <span style="color:#333;">Welcome {{ user.username }}</span>
+    <hr>
+    
+    {% if winner == "user" %}
+      <p>You won! The computer played <b>{{ computer_choice }}</b> and you played <b>{{ user_choice }}</b>.</p>
+    {% elif winner == "computer" %}
+      <p>You lost! The computer played <b>{{ computer_choice }}</b> and you played <b>{{ user_choice }}</b>.</p>
+    {% else %}
+      <p>It's a tie! The computer also played <b>{{ computer_choice }}</b> and you played <b>{{ user_choice }}</b>.</p>
+    {% endif %}
+    
+    <p>Your current rank: {{position}}</p>
+    
+    <ul>  
+      <li style="color: blueviolet;">Played: {{ total_played }}</li>
+      <li style="color:green;">Wins: {{ total_wins }}</li>
+      <li style="color:red;">Losses: {{ total_losses }}</li>
+      <li style="color:black;">Ties: {{ total_draws }}</li>
+    </ul>
+    
+    <hr>
+      <a class="btn btn-outline-primary" href="{% url 'play-game' %}">Play again</a>
+    
+  </div>
+  <div class="col-lg-4 col-md-6 col-12">
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        <b>RPS Top Ranking</b>
+      </div>
+        <ul class="list-group list-group-flush">
+          {% for rank in ranks %}
+            <li class="list-group-item">{{ rank.user.username }}</li>
+          {% endfor %}
+        </ul>
+    </div>
+  </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

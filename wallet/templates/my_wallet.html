@@ -1,0 +1,54 @@
+{% extends 'dashboard_base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-lg-9 col-md-8 col-12" >
+	<h4>Wallet Info</h4><hr>
+
+	<div class="card animated animate__animated animate__fadeInUp animate__slower">
+	  
+	  <div class="card-header">
+	    {% if user_deets == 'Beginner' %}
+			<span class="badge badge-success">{{ user_deets }}</span>
+		{% elif user_deets == 'Intermediate' %}
+		<span class="badge badge-warning">{{ user_deets }}</span>
+		{% elif user_deets == 'Advanced' %}
+			<span class="badge badge-info">{{ user_deets }}</span>
+		{% else %}
+			<span class="badge badge-danger">{{ user_deets }}</span>
+		{% endif %}
+	  </div>
+	  <div class="card-body">
+	    <h5 class="card-title">Wallet Balance</h5>
+	    <p class="card-text" style="color:green;">&#x20A6;{% if wallet %} {{ wallet }} {% else %} 0.0 {% endif %}</p>
+	    <a href="#" class="btn btn-primary">Purchase</a>
+	   	<a href="{% url 'subscribe' %}" class="btn btn-primary">Subscribe</a> 
+
+	  </div>
+	</div> <br>
+
+
+	<!-- Form here -->
+
+	<div class="row animated animate__animated animate__fadeInDown animate__slower">
+	  <div class="col-sm-6" style="margin-bottom: 10px;">
+	    <div class="card">
+	      <div class="card-body">
+	        <h5 class="card-title">Expenditure</h5>
+	        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	        <a href="#" class="btn btn-primary">View Transactions</a>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="col-sm-6">
+	    <div class="card">
+	      <div class="card-body">
+	        <h5 class="card-title">Income</h5>
+	        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	        <a href="{% url 'play-game' %}" class="btn btn-primary">Earn more</a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+
+{% endblock content %}

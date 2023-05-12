@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jankens is an online fun and interactive game that allows you as a player to play the rock-paper-scissors game with the computer and earn real money. You can also earn money via other ways. It's important to know that this isn;t a get-rich-quick sheme or a ponzi scheme. It's a game like any other game with a touch of class and love poured into it. It offers various degree of excitement and critical thinking as you get to channel your focus to stay in the top ranking; for the premium users. ">
+    <meta name="keywords" content="rock, paper, scissors, rps, rock-paper-scissors, Jankens, Rashombo, online game, real time game">
+    <meta name="author" content="Damilare Samuel, Sodbridge Academy">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8S4MT3EYG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-M8S4MT3EYG');
+    </script>
+
+    <!-- Favicon icon-->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/favicon/logo.png' %}">
+
+    <!-- Libs CSS -->
+    <link href="{% static 'assets/fonts/feather/feather.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/libs/bootstrap-icons/font/bootstrap-icons.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/libs/@mdi/font/css/materialdesignicons.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/libs/simplebar/dist/simplebar.min.css' %}" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/theme.min.css' %}">
+
+    <title>Jenkens - Logged out | Easy and fun game to win real cash!</title>
+</head>
+
+<body>
+    <!-- Page content -->
+    <main>
+        <section class="container d-flex flex-column">
+            <div class="row align-items-center justify-content-center g-0 min-vh-100">
+                <div class="col-lg-5 col-md-8 py-8 py-xl-0">
+                    <!-- Card -->
+                    <div class=" shadow">
+                        <!-- Card body -->
+                        <h2>You have been logged out!</h2>
+						<div class="border-top pt-3">
+							<small class="text-muted"> 
+								<a href="{% url 'login' %}" class="ml-2">Log In Again</a> <hr>
+								<a href="{% url 'home' %}">Return to home page</a>
+							</small>
+						</div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Scripts -->
+<!-- Libs JS -->
+    <script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/libs/simplebar/dist/simplebar.min.js' %}"></script>
+    <!-- Theme JS -->
+    <script src="{% static 'assets/js/theme.min.js"></script>
+
+
+</body>
+
+</html>

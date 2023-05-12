@@ -1,0 +1,779 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" style="overflow-x: hidden;">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jankens is an online fun and interactive game that allows you as a player to play the rock-paper-scissors game with the computer and earn real money. You can also earn money via other ways. It's important to know that this isn;t a get-rich-quick sheme or a ponzi scheme. It's a game like any other game with a touch of class and love poured into it. It offers various degree of excitement and critical thinking as you get to channel your focus to stay in the top ranking; for the premium users. ">
+    <meta name="keywords" content="rock, paper, scissors, rps, rock-paper-scissors, Jankens, Rashombo, online game, real time game">
+    <meta name="author" content="Damilare Samuel, Sodbridge Academy">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8S4MT3EYG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-M8S4MT3EYG');
+    </script>
+
+    <!-- Favicon icon-->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/favicon/logo.png' %}">
+
+    <!-- Libs CSS -->
+    <link href="{% static 'assets/fonts/feather/feather.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/libs/bootstrap-icons/font/bootstrap-icons.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/libs/@mdi/font/css/materialdesignicons.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/libs/simplebar/dist/simplebar.min.css' %}" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/theme.min.css' %}">
+
+    <title>Jankens - Easy and fun game to win real cash!</title>
+</head>
+
+<body class="bg-white overflow-hidden">
+
+    <!-- Navbar -->
+    <!-- navbar login -->
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-default shadow-none ">
+        <div class="container px-0">
+            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'assets/images/brand/logo/logo.png' %}" alt="jankens_logo" style="height: 30px;"></a>
+
+            <!-- Button -->
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-default"    aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
+        			<span class="icon-bar top-bar mt-0"></span>
+        			<span class="icon-bar middle-bar"></span>
+        			<span class="icon-bar bottom-bar"></span>
+        		</button>
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="navbar-default">
+                <ul class="navbar-nav">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{% url 'home' %}" id="navbarLanding" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarPages" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+                    </li>
+
+
+                    
+                	<!-- </li> -->
+                </ul>
+            </div>
+
+            <ul class="navbar-nav navbar-right-wrap ms-2 d-none d-lg-block">
+                <div class="ms-auto mt-3 mt-lg-0">
+                        <div style="margin-right:;" class="d-flex align-items-center">
+                            <li class="list-group-item">                            
+                                <a href="#" class="form-check form-switch theme-switch btn btn-light btn-icon rounded-circle me-2 ">
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Toggle</label>
+                                </a> 
+                            </li>
+                            {% if user.is_authenticated %}
+                            <li class="list-group-item">
+                                <a href="{% url 'dashboard' %}" class="btn btn-primary ">Dashboard</a>
+                            </li>
+                            {% else %}
+                            <li class="list-group-item">
+                                <a href="{% url 'login' %}" class="btn btn-primary ">Login</a>
+                            </li>
+                            {% endif %}
+                        </div>
+                    </div> 
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Page Content -->
+        <section class="py-lg-14 py-10 position-relative bg-cover" style="background-image:
+      url({% static 'assets/images/background/gradient-bg.png' %});">
+            <!-- Image -->
+            <div class="container">
+                <div class="row align-items-center mb-6">
+                    <div class="col-12 col-lg-7 order-md-2">
+                        <div class="mb-2 mb-md-0">
+                            <img src="{% static 'assets/images/background/graphics.svg' %}" alt="" class="img-fluid mw-md-130">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-5 order-md-1">
+                        <!-- Heading -->
+                        <h1 class="display-2 mb-5 fw-bold">
+                            The old and trusted game made modern! 
+                        </h1>
+                        <!-- list -->
+                        <ul class="list-unstyled fs-3 text-dark
+               mb-6 fw-medium">
+                            <li class="mb-1 d-flex"><i class="mdi mdi-check-circle text-success
+                  me-2"></i>Simple to play, simple to win.</li>
+                            <li class="mb-1 d-flex"><i class="mdi mdi-check-circle text-success
+                  me-2"></i>Make posts of different formats.</li>
+                            <li class="mb-1 d-flex"><i class="mdi mdi-check-circle text-success
+                  me-2"></i>Connect with friends all around the globe!</li>
+                        </ul>
+                        <!-- Buttons -->
+                        <div class="mb-8 mb-lg-0">
+                            <a href="{% url 'login' %}" class="btn btn-primary me-3 mb-2 mb-lg-0">
+                Get started for Free
+              </a>
+
+                            <!-- <a href="#" class="text-nowrap btn-link">
+                Questions?
+              </a> -->
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Hero Section -->
+                <!-- row -->
+                <div class="row mt-10">
+                    <div class="offset-xl-1 col-xl-10 col-md-12 col-12">
+                        <!-- Heading -->
+                        <div class="text-center mb-6 px-md-8">
+                            <span class="ls-md">TRUSTED BY MILLIONS OF CHILDREN & THOUSANDS OF SCHOOLS.</span>
+                        </div>
+                        <!-- row -->
+                        <div class="row text-center">
+                            <!-- col -->
+                            <div class="col">
+                                <div class="mb-4 mb-lg-0">
+                                    <img src="{% static 'assets/images/brand/gray-logo-airbnb.svg' %}" alt="" class="">
+                                </div>
+                            </div>
+                            <!-- col -->
+                            <div class="col">
+                                <div class="mb-4 mb-lg-0">
+                                    <img src="{% static 'assets/images/brand/gray-logo-discord.svg' %}" alt="" class="">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-4 mb-lg-0">
+                                    <img src="{% static 'assets/images/brand/gray-logo-intercom.svg' %}" alt="" class="">
+                                </div>
+                            </div>
+                            <!-- col -->
+                            <div class="col">
+                                <div class="mb-4 mb-lg-0">
+                                    <img src="{% static 'assets/images/brand/gray-logo-stripe.svg' %}" alt="" class="">
+                                </div>
+                            </div>
+                            <!-- col -->
+                            <div class="col">
+                                <div class="mb-4 mb-lg-0">
+                                    <img src="{% static 'assets/images/brand/gray-logo-netflix.svg' %}" alt="" class="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- Features & brand logos -->
+        <section class="py-lg-20 py-8">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 col-12">
+                        <!-- featues -->
+                        <div class="mb-6 mb-lg-0 fs-4">
+                            <!-- icon -->
+                            <div class="icon-shape icon-lg bg-primary text-light-primary rounded-circle
+                text-center mb-4"><i class="mdi mdi-flash mdi-24px lh-1"></i></div>
+                            <h3 class="fw-bold">Easy Sign Up Process</h3>
+                            <p>Are you a new member? Get started by clicking the get started button.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 col-12">
+                        <!-- features -->
+                        <div class="mb-6 mb-lg-0 fs-4">
+                            <!-- icon -->
+                            <div class="icon-shape icon-lg bg-primary text-light-primary rounded-circle
+                text-center mb-4"><i class="mdi mdi-layers mdi-24px lh-1"></i></div>
+                            <h3 class="fw-bold">Quality First</h3>
+                            <p>	Transparency first. Get to know your position and overall ranking.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 col-12">
+                        <!-- features -->
+                        <div class="mb-6 mb-lg-0 fs-4">
+                            <!-- icon -->
+                            <div class="icon-shape icon-lg bg-primary text-light-primary rounded-circle
+                text-center mb-4"><i class="mdi mdi-cellphone mdi-24px
+                  lh-1"></i></div>
+                            <h3 class="fw-semi-bold">Earn</h3>
+                            <p>Monitor your income in real time as you play.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 col-12">
+                        <!-- features -->
+                        <div class="mb-6 mb-lg-0 fs-4">
+                            <!-- icon -->
+                            <div class="icon-shape icon-lg bg-primary text-light-primary rounded-circle
+                text-center mb-4"><i class="mdi mdi-infinity mdi-24px lh-1"></i></div>
+                            <h3 class="fw-bold">Unlimited</h3>
+                            <p>Enjoy unlimited features to earn more. Only available to premium members.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- image section -->
+         <section class="pb-lg-16 pb-8">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-12 col-12">
+                        
+                        <div class="mb-4 mb-lg-0 bg-gray-200 rounded-4 ">
+                            <!-- <img src="{% static 'assets/images/svg/featured-img-1.svg' %}" alt="..." class="img-fluid w-100"> -->
+                             <div class="card mb-4">
+                        <!-- Card body -->
+                        
+                        <div class="card-body" style="display:inline-flex;">
+                            <div class="text-center">
+                                {% for player in top_players %}
+                                <a href="">
+                                <img src="{{ player.user.profile.image.url }}" class="rounded-circle avatar-xl mb-3" alt="player_picture">
+                                </a>
+                                <h4 class="mb-1">{{ player.user.username }}</h4>
+                                <p class="mb-0">
+                                    <i class="fe fe-map-pin me-1"></i>{{ player.user.profile.state }}
+                                </p>
+                                <a href="" class="btn btn-sm btn-outline-secondarymt-3">View</a>
+                                 {% endfor %}
+
+                            </div>
+                            <div class="d-flex justify-content-between border-bottom py-2 mt-4 fs-6">
+                                <span>Joined</span>
+                                <span class="text-dark">{{ player.date_created|date }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between pt-2 fs-6">
+                                <span>Rank</span>
+                                <span class="text-success"> 0% </span>
+                            </div>
+                        </div>
+                                           </div>
+
+
+
+    
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-12 mt-4 mt-lg-0">
+                        
+                        <div class="ps-lg-7">
+                            <span class=" text-primary ls-md text-uppercase fw-semi-bold">Current Winners</span>
+                            <!-- <h2 class="display-4 mt-4 mb-3 fw-bold">Build the sites you want with Geeks UI you love</h2> -->
+                            <h3>Meet the top performing players of the day.</h3>
+                            <div class="mt-5 row">
+                                
+                                 <div class="col">
+                                    <ul class="list-unstyled fs-4 fw-medium">
+                                        <li class="mb-2 d-flex"><i class="mdi mdi-check-circle text-success me-2"></i>Date: {% now "jS F Y H:i" %} </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <hr class="my-lg-12 my-8">
+                <!-- <div class="row align-items-center">
+                    
+                    <div class="col-lg-6 col-md-12 col-12">
+                       
+                        <div class="pe-lg-6 ps-lg-6">
+                            <span class="text-primary ls-md text-uppercase
+                fw-semi-bold">Bullet point Features
+              </span>
+                            <h2 class="display-4 mt-4 mb-3 fw-bold">The most powerful design for web projects</h2>
+                            <h3>Donec eget enim volutpat punar turpis at elementum neque.</h3>
+                            <div class="mt-6">
+                              
+                                <div class="d-flex mb-4">
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-star-fill text-primary mt-1" viewBox="0 0 16 16">
+                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                                    </div>
+                                    <div class="ms-3">
+                                        
+                                        <h3 class="mb-2">5-Star Rating </h3>
+                                        <p class="mb-0 fs-4">Pellentesque ipsum nulla cursus sodales enim non interdum dignissim quam.
+                                        </p>
+                                    </div>
+                                </div>
+                                   <div class="d-flex mb-4">
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-life-preserver mt-1 text-primary" viewBox="0 0 16 16">
+                      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm6.43-5.228a7.025 7.025 0 0 1-3.658 3.658l-1.115-2.788a4.015 4.015 0 0 0 1.985-1.985l2.788 1.115zM5.228 14.43a7.025 7.025 0 0 1-3.658-3.658l2.788-1.115a4.015 4.015 0 0 0 1.985 1.985L5.228 14.43zm9.202-9.202-2.788 1.115a4.015 4.015 0 0 0-1.985-1.985l1.115-2.788a7.025 7.025 0 0 1 3.658 3.658zm-8.087-.87a4.015 4.015 0 0 0-1.985 1.985L1.57 5.228A7.025 7.025 0 0 1 5.228 1.57l1.115 2.788zM8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                    </svg>
+                                    </div>
+                                    
+                                    <div class="ms-3">
+                                        <h3 class="mb-2">Dedicated Support</h3>
+                                        <p class="mb-0 fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate quas lorem ipsum dolor sit maet cumque!
+                                        </p>
+                                    </div>
+                                </div>
+                               
+                                <div class="d-flex ">
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-earmark-text-fill text-primary mt-1" viewBox="0 0 16 16">
+                      <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z"/>
+                    </svg>
+                                    </div>
+                                   
+                                    <div class="ms-3">
+                                        <h3 class="mb-2 lh-1">Quality Documentation <span class="badge bg-warning-soft fs-6 ms-1">coming soon</span></h3>
+                                        <p class="mb-0 fs-4">Amet consectetur adipisicing elit. Excepturi hic atque dolorem tempore! augue pharetra.
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-12">
+                       
+                        <div class="mt-4 mt-lg-0 bg-gray-200 rounded-4">
+                            <img src="{% static ' assets/images/svg/featured-img-2.svg' %}" alt="..." class="img-fluid w-100">
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+         </section>  
+
+        <!-- The Big 6 -->
+        <section class="py-lg-14 py-8 bg-gray-200">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-md-12 col-12">
+                        <!-- heading -->
+                        <div class="text-center mb-8">
+                            <span class="text-warning ls-md text-uppercase
+                fw-semi-bold">Quality Game Features
+
+              </span>
+                            <h2 class="display-3 mt-4 mb-3 fw-bold">Other App Features</h2>
+                            <p class="lead  px-8">The Big Six</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- row -->
+                <div class="row">
+                    <div class="col-xl-2 col-md-4 col-6 mb-3 mb-xl-0">
+                        <!-- card card-borderd  -->
+                        <div class="card  h-100">
+                            <!-- card body  -->
+                            <div class="card-body">
+                                <img src="{% static 'assets/images/brand/dropbox-logo.svg' %}" alt="" class="icon-lg mb-3">
+                                <h3 class="">Posts</h3>
+                                <p class="mb-0 ">Bring your ideas and talent to the limelight.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-4 col-6 mb-3 mb-xl-0">
+                        <!-- card card-borderd  -->
+                        <div class="card
+              h-100">
+                            <!-- card body  -->
+                            <div class="card-body">
+                                <img src="{% static 'assets/images/brand/hubspot.svg' %}" alt="" class="icon-lg mb-3">
+                                <h3 class="">Player Connections</h3>
+                                <p class="mb-0 ">Establish connections with different players across the globe.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-4 col-6 mb-3 mb-xl-0">
+                        <!-- card card-borderd  -->
+                        <div class="card
+              h-100">
+                            <!-- card body  -->
+                            <div class="card-body">
+                                <img src="{% static 'assets/images/brand/google-drive.svg' %}" alt="" class="icon-lg mb-3">
+                                <h3 class="">Drive</h3>
+                                <p class="mb-0 ">Improve your drive by entering the top ranking players</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-4 col-6 mb-3 mb-xl-0">
+                        <!-- card card-borderd  -->
+                        <div class="card
+              h-100">
+                            <!-- card body  -->
+                            <div class="card-body">
+                                <img src="{% static 'assets/images/brand/slack-logo.svg' %}" alt="" class="icon-lg mb-3">
+                                <h3 class="">Community</h3>
+                                <p class="mb-0 ">Join a community of fun and interesting people</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-4 col-6 mb-3 mb-xl-0">
+                        <!-- card card-borderd  -->
+                        <div class="card
+              h-100">
+                            <!-- card body  -->
+                            <div class="card-body">
+                                <img src="{% static 'assets/images/brand/zapier.svg' %}" alt="" class="icon-lg mb-3">
+                                <h3 class="">Challenge</h3>
+                                <p class="mb-0 ">You can also challenge a friend in rela time. Coming soon.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-4 col-6 mb-3 mb-xl-0">
+                        <!-- card card-borderd  -->
+                        <div class="card
+              h-100">
+                            <!-- card body  -->
+                            <div class="card-body">
+                                <img src="{% static 'assets/images/brand/dropbox-logo.svg' %}" alt="" class="icon-lg mb-3">
+                                <h3 class="">Sales</h3>
+                                <p class="mb-0 ">Make sales via selling your products or services on the app. Coming soon.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="row">
+                    <div class="col-12 text-center mt-8">
+                        <a href="#" class="btn btn-primary">View All Apps</a>
+                    </div>
+                </div> -->
+            </div>
+        </section>
+        
+        <!-- testimonials  -->
+        <section class="pt-lg-16 pb-lg-14 pt-8 pb-8">
+            <div class="container">
+                <div class="row">
+                    <div class="offset-lg-1 col-lg-5 col-md-6 col-12">
+                        <div class="mb-10 mb-md-0">
+                            <!-- image  -->
+                            <div class="mb-4">
+                                <img src="{% static 'assets/images/svg/hubspot-logo.svg' %}" alt="">
+
+                            </div>
+                            <!-- para  -->
+                            <p class="fs-3 mb-5">"I am very satisfied with my purchase. Your team helped me a lot with the new release for RLT version. I hope you are always successful. Thank you for your services and support."</p>
+                            <h4 class="mb-0">Ali</h4>
+
+                            <p>Jenkens Top Player</p>
+
+                        </div>
+                    </div>
+                    <div class="offset-lg-1 col-lg-5 col-md-6 col-12">
+                        <div class="mb-10 mb-md-0">
+                            <!-- image  -->
+                            <div class="mb-5">
+                                <img src="{% static 'assets/images/svg/slack-logo.svg' %}" alt="">
+
+                            </div>
+                            <!-- para  -->
+                            <p class="fs-3 mb-5">"This item has everything you need for creating a modern learning-platform. Really delighted by many details and the overall architecture. Support was superfast and helpful as well."</p>
+                            <h4 class="mb-0">Joseph Musa</h4>
+
+                            <p>Jankens Customer</p>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- divider  -->
+                <hr class="my-lg-12 my-8">
+                <div class="row">
+                    <div class="offset-xl-2 col-xl-8 offset-lg-1 col-lg-10 col-md-12 col-12">
+                        <!-- pricing -->
+                        <div class="mb-8 text-center">
+                            <h2 class="display-4 mb-3 fw-bold">Simple plans for everyone</h2>
+                            <p class="lead mb-4">Everything you need to boost your focus, creativity and supercharge your productivity with Jenkins game.</p>
+                            
+                            <!-- Switch Toggle -->
+                            <div id="pricing-switch-second" class="d-flex justify-content-center align-items-center">
+                                <span class="fs-4 fw-semi-bold me-2">Pay Monthly</span>
+                                <span class="form-check form-switch form-switch-price">
+                                  <input type="checkbox" class="form-check-input" id="customSwitch1"  />
+                                  <label class="form-check-label" for="customSwitch1"></label>
+                                </span>
+                                <span class="fs-4 fw-semi-bold ms-2"> Pay Yearly</span>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <!-- col  -->
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <!-- Card -->
+                                <div class="card shadow-none border mb-3">
+                                    <!-- Card body -->
+                                    <div class="p-5">
+                                        <div class="mb-5">
+                                            <h4 class="fw-bold text-uppercase ls-md mb-4">Free</h4>
+                                            <div class="d-flex mb-4">
+                                                <span class="h3 mb-0 fw-bold">&#x20A6;</span>
+                                                <div class="price-card--price-number
+                          toggle-price-content-second odometer fs-1" data-price-monthly="0" data-price-yearly="0">
+                                                    0.00
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- button  -->
+                                        <a href="{% url 'login' %}" class="btn btn-outline-primary btn-block">Get started now</a>
+                                        <div class="px-2 mt-6">
+                                            <!-- List -->
+                                            <ul class="list-unstyled mb-0">
+                                                <li class="mb-3 d-flex align-items-center">
+                                                    <i class="fe fe-check  text-success me-2"></i>
+                                                    <span>10 high quality posts </span>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-center">
+                                                    <i class="fe fe-check  text-success me-2"></i>
+                                                    <span>Instant access to the game </span>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-center">
+                                                    <i class="fe fe-check  text-success me-2"></i>
+                                                    <span>10 free initial products/services </span>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-center">
+                                                    <i class="fe fe-check text-success  me-2"></i>
+                                                    <span>Unlimited playing opportunities </span>
+                                                </li>
+                                                
+                                                <li class="mb-3 d-flex align-items-center">
+                                                    <i class="fe fe-check text-success  me-2"></i>
+                                                    <span>In-app purchase </span>
+                                                </li>
+                                                <li class="d-flex align-items-center">
+                                                    <i class="fe fe-x   me-2"></i>
+                                                    <span>Support 24/7 hours </span>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-center">
+                                                    <i class="fe fe-x   me-2"></i>
+                                                    <span>Withdrawal </span>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-center">
+                                                    <i class="fe fe-x   me-2"></i>
+                                                    <span>Challenge other players </span>
+                                                </li>
+                                                <li class="d-flex align-items-center">
+                                                    <i class="fe fe-x   me-2"></i>
+                                                    <span>Earn from top rankings </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <!-- Card -->
+                                <div class="card shadow-none border mb-3">
+                                    <!-- Card body -->
+                                    <div class="p-5">
+                                        <div class="mb-5">
+                                            <h4 class="fw-bold text-uppercase ls-md mb-4">Premium</h4>
+                                            <div class="d-flex mb-4">
+                                                <span class="h3 mb-0 fw-bold">&#x20A6;</span>
+                                                <div class="price-card--price-number
+                          toggle-price-content-second odometer fs-1" data-price-monthly="2000" data-price-yearly="20000">
+                                                    2000.00
+
+                                                </div>
+                                                <span class="align-self-end mb-1 ms-2
+                          toggle-price-content-second" data-price-monthly="/mo" data-price-yearly="/y">/month</span>
+                                            </div>
+                                        </div>
+                                        <!-- button  -->
+                                        <a href="{% url 'subscribe' %}" class="btn btn-primary btn-block">Get started now</a>
+                                        <div class="px-2 mt-6">
+                                            <!-- List -->
+                                            <ul class="list-unstyled mb-0">
+                                                <li class="mb-3 d-flex align-items-center">
+                                                    <i class="fe fe-check  text-success me-2"></i>
+                                                    <span>Unlimited high quality posts </span>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-center">
+                                                    <i class="fe fe-check  text-success me-2"></i>
+                                                    <span>Instant access to premium-tier space </span>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-center">
+                                                    <i class="fe fe-check  text-success me-2"></i>
+                                                    <span>Unlimited free initial products/services </span>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-center">
+                                                    <i class="fe fe-check  text-success me-2"></i>
+                                                    <span>Unlimited playing opportunities </span>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-center">
+                                                    <i class="fe fe-check  text-success me-2"></i>
+                                                    <span>In-app purchase </span>
+                                                </li>
+                                                <li class="d-flex align-items-center">
+                                                    <i class="fe fe-check  text-success me-2"></i>
+                                                    <span>Support 24/7 hours </span>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-center">
+                                                    <i class="fe fe-check  text-success me-2"></i>
+                                                    <span> Withdrawal </span>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-center">
+                                                    <i class="fe fe-check text-success  me-2"></i>
+                                                    <span>Challenge other players </span>
+                                                </li>
+                                                <li class="d-flex align-items-center">
+                                                    <i class="fe fe-check  text-success me-2"></i>
+                                                    <span>Earn from top rankings</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- small cta  -->
+                <!-- <div class="row text-center mt-8">
+                    <div class="offset-lg-3 col-lg-6 col-md-12 col-12">
+                        <h2>Need a custom plan for your company?</h2>
+                        <p class="fs-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed semper scelerisque morbi lobortis <a href="https://geeksui.codescandy.com/geeks/" target="_blank">contact us</a>.</p>
+                    </div>
+                </div> -->
+            </div>
+        </section>
+        
+        <!-- cta with bg color  -->
+        <section class="py-14 bg-gray-200">
+            <div class="container">
+                <div class="row">
+                    <div class="offset-lg-2 col-lg-8 col-md-12 col-12 text-center">
+                        <span class="fs-4 text-warning ls-md text-uppercase
+              fw-semi-bold">What are you waitng for?
+
+            </span>
+                        <!-- heading  -->
+                        <h2 class="display-3 mt-4 mb-3 fw-bold">Just try it out! You’ll fall in love</h2>
+                        <!-- para  -->
+                        <p class="lead px-lg- 8 mb-6">Designed for young and old alike, male and female with heart and love.</p>
+                        <a href="{% url 'login' %}" class="btn btn-primary">Try For Free</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- footer -->
+    <!-- footer -->
+    <footer class="pt-lg-10 pt-5 footer bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- about company -->
+                    <div class="mb-4">
+                        <img src="{% static 'assets/images/brand/logo/logo.png' %}" alt="jankens_logo" style="height:30px;" class="logo-inverse ">
+                        <div class="mt-4">
+                            <p>Jankens is feature-rich app and beautifully created game for everyone, built with love and heart.</p>
+                            <!-- social media -->
+                            <div class="fs-4 mt-4">
+                                <a href="#" class="mdi mdi-facebook fs-4 text-muted me-2"></a>
+                                <a href="#" class="mdi mdi-twitter text-muted me-2"></a>
+                                <a href="#" class="mdi mdi-instagram text-muted "></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="offset-lg-1 col-lg-2 col-md-3 col-6">
+                    <div class="mb-4">
+                        <!-- list -->
+                        <h3 class="fw-bold mb-3">Company</h3>
+                        <ul class="list-unstyled nav nav-footer flex-column nav-x-0">
+                            <li><a href="#" class="nav-link">About</a></li>
+                            <li><a href="#" class="nav-link">Pricing</a></li>
+                            <li><a href="#" class="nav-link">Blog</a></li>
+                            <!-- <li><a href="#" class="nav-link">Careers</a></li> -->
+                            <li><a href="#" class="nav-link">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <div class="mb-4">
+                        <!-- list -->
+                        <h3 class="fw-bold mb-3">Support</h3>
+                        <ul class="list-unstyled nav nav-footer flex-column nav-x-0">
+                            <li><a href="#" class="nav-link">Help and Support</a></li>
+                            <li><a href="#" class="nav-link">Become a vendor</a></li>
+                            <!-- <li><a href="#" class="nav-link">Get the app</a></li> -->
+                            <li><a href="#" class="nav-link">FAQ’s</a></li>
+                            <!-- <li><a href="#" class="nav-link">Tutorial</a></li> -->
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12">
+                    <!-- contact info -->
+                    <div class="mb-4">
+                        <h3 class="fw-bold mb-3">Get in touch</h3>
+                        <p>339 McDermott Points Hettingerhaven, NV 15283</p>
+                        <p class="mb-1">Email: <a href="#">support@jenkens.com</a></p>
+                        <p>Phone: <span class="text-dark fw-semi-bold">(000) 123 456 789</span></p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center g-0 border-top py-2 mt-6">
+                <!-- Desc -->
+                <div class="col-lg-4 col-md-5 col-12">
+                    <span>© <span id="copyright">
+                  <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+              </span> Jenkens. All Rights Reserved</span>
+                </div>
+
+                <!-- Links -->
+                <div class="col-12 col-md-7 col-lg-8 d-md-flex justify-content-end">
+                    <nav class="nav nav-footer">
+                        <a class="nav-link ps-0" href="#">Privacy Policy</a>
+                        <a class="nav-link d-none d-lg-block" href="#">About</a>
+                        <a class="nav-link px-2 px-md-3" href="#">FAQs</a>
+                        <a class="nav-link" href="#">Terms of Use</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Scripts -->
+
+    <!-- Libs JS -->
+    <script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/libs/simplebar/dist/simplebar.min.js' %}"></script>
+    <!-- Theme JS -->
+    <script src="{% static 'assets/js/theme.min.js"></script>
+
+
+    <script src="{% static 'assets/libs/odometer/odometer.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendors/pricing.js' %}"></script>
+
+
+</body>
+
+</html>
